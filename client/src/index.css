@@ -8,8 +8,7 @@ body {
 .movie-card {
   background-color: #fff;
   border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
   cursor: pointer;
   position: relative;
@@ -24,8 +23,7 @@ body {
 .saved-list {
   background-color: #fff;
   border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
   cursor: pointer;
   position: relative;
@@ -43,16 +41,19 @@ body {
 .saved-movie {
   margin: 0 10px;
 }
+
 .saved-active {
   color: blue;
   border: 1px solid grey;
   padding: 5px;
 }
+
 .save-wrapper {
   position: relative;
   width: 75%;
   margin: 1rem auto;
 }
+
 .save-button {
   position: absolute;
   top: 25px;
@@ -61,6 +62,7 @@ body {
   padding: 5px 10px;
   background-color: lightseagreen;
 }
+
 .save-button:hover {
   background-color: green;
   color: white;
@@ -74,4 +76,45 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.update-movie {
+  /* border: 1px solid red; */
+}
+
+.update-movie form {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.update-movie form label {
+  font-size: 18px;
+  margin: 10px 0;
+  color: rgb(71, 71, 71);
+}
+
+.update-movie form input {
+  font-size: 18px;
+  outline: none;
+  padding: 2px 5px;
+}
+
+#title {
+  margin-left: 70px;
+}
+
+#director {
+  margin-left: 41px;
+}
+
+#metascore {
+  margin-left: 17px;
+}
+
+#stars {
+  margin-left: 53px;
 }

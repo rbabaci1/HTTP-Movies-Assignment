@@ -24,6 +24,7 @@ export default function UpdateMovie() {
         <label>
           Title:
           <input
+            id='title'
             type='text'
             name='title'
             value={title}
@@ -34,6 +35,7 @@ export default function UpdateMovie() {
         <label>
           Director:
           <input
+            id='director'
             type='text'
             name='director'
             value={director}
@@ -44,6 +46,7 @@ export default function UpdateMovie() {
         <label>
           MetaScore:
           <input
+            id='metascore'
             type='text'
             name='metascore'
             value={metascore}
@@ -54,6 +57,7 @@ export default function UpdateMovie() {
         <label>
           Actors:
           <input
+            id='stars'
             type='text'
             name='stars'
             value={stars}
