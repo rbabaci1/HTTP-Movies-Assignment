@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useHistory } from 'react-router-dom';
 const initialState = {
   title: '',
   director: '',
@@ -11,6 +11,8 @@ export default function UpdateMovie() {
   const [movieInfo, setMovieInfo] = useState(initialState);
   const { title, director, metascore, stars } = movieInfo;
 
+  const history = useHistory();
+
   const handleChange = (e) => {
     setMovieInfo({
       ...movieInfo,
@@ -18,9 +20,11 @@ export default function UpdateMovie() {
     });
   };
 
+  const updateMovie = (e) => {};
+
   return (
     <div className='update-movie'>
-      <form>
+      <form onSubmit={updateMovie}>
         <label>
           Title:
           <input
@@ -64,6 +68,8 @@ export default function UpdateMovie() {
             onChange={handleChange}
           />
         </label>
+
+        <button>Update</button>
       </form>
     </div>
   );
