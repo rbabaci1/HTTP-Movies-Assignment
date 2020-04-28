@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 const initialState = {
   id: 0,
   title: '',
@@ -12,6 +13,8 @@ export default function UpdateMovie() {
   const [movieInfo, setMovieInfo] = useState(initialState);
   const { title, director, metascore, stars } = movieInfo;
 
+  console.log(movieInfo);
+
   const history = useHistory();
 
   const movieToUpdate = history.location.state
@@ -23,17 +26,24 @@ export default function UpdateMovie() {
   }, [movieToUpdate]);
 
   const handleChange = (e) => {
-    setMovieInfo({
-      ...movieInfo,
-      [e.target.name]: e.target.value,
-    });
+    if (e.target.name === 'stars') {
+      setMovieInfo({ ...movieInfo, stars: e.target.value.split(',') });
+    } else {
+      setMovieInfo({ ...movieInfo, [e.target.name]: e.target.value });
+    }
   };
 
   const updateMovie = (e) => {
     e.preventDefault();
 
     if (movieToUpdate) {
-      setMovieInfo(movieToUpdate);
+      axios
+        .put(`http://localhost:5000/api/movies/${movieToUpdate.id}`, movieInfo)
+        .then(() => {
+          setMovieInfo(initialState);
+          history.push('/movies');
+        })
+        .catch((err) => console.error(err));
     }
   };
 
