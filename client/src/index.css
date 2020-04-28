@@ -90,31 +90,64 @@ body {
 
 .update-movie {
   /* border: 1px solid red; */
+  width: 75%;
+  margin: auto;
+  padding: 1rem;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
 }
 
 .update-movie form {
-  width: 75%;
-  margin: auto;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  width: fit-content;
 }
 
 .update-movie form label {
   font-size: 18px;
   margin: 10px 0;
   color: rgb(71, 71, 71);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .update-movie form input {
   font-size: 18px;
   outline: none;
-  padding: 2px 5px;
+  padding: 5px;
+}
+
+.update-movie form textarea {
+  font-size: 18px;
+  padding: 5px;
+}
+
+.textarea {
+  margin-top: 20px;
+}
+
+.textarea * {
+  vertical-align: top;
+}
+
+.form-submit-btn {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-submit-btn button {
+  font-size: 18px;
+  padding: 3px 12px;
+  border: 1px solid rgb(184, 181, 181);
+  cursor: pointer;
+}
+
+.form-submit-btn button:hover {
+  background-color: black;
+  color: white;
 }
 
 #title {
-  margin-left: 70px;
+  margin-left: 75px;
 }
 
 #director {

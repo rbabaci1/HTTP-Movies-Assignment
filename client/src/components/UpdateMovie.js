@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 const initialState = {
+  id: 0,
   title: '',
   director: '',
   metascore: '',
@@ -13,6 +14,14 @@ export default function UpdateMovie() {
 
   const history = useHistory();
 
+  const movieToUpdate = history.location.state
+    ? history.location.state.movie
+    : null;
+
+  useEffect(() => {
+    setMovieInfo((state) => (movieToUpdate ? movieToUpdate : state));
+  }, [movieToUpdate]);
+
   const handleChange = (e) => {
     setMovieInfo({
       ...movieInfo,
@@ -20,7 +29,13 @@ export default function UpdateMovie() {
     });
   };
 
-  const updateMovie = (e) => {};
+  const updateMovie = (e) => {
+    e.preventDefault();
+
+    if (movieToUpdate) {
+      setMovieInfo(movieToUpdate);
+    }
+  };
 
   return (
     <div className='update-movie'>
@@ -58,18 +73,23 @@ export default function UpdateMovie() {
           />
         </label>
 
-        <label>
-          Actors:
-          <input
-            id='stars'
-            type='text'
-            name='stars'
-            value={stars}
-            onChange={handleChange}
-          />
-        </label>
+        <section className='textarea'>
+          <label>
+            Actors:
+            <textarea
+              rows='4'
+              cols='30'
+              id='stars'
+              name='stars'
+              value={stars}
+              onChange={handleChange}
+            />
+          </label>
+        </section>
 
-        <button>Update</button>
+        <div className='form-submit-btn'>
+          <button>Update</button>
+        </div>
       </form>
     </div>
   );
