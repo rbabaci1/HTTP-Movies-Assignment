@@ -17,7 +17,9 @@ const App = () => {
   };
 
   const addToSavedList = (movie) => {
-    setSavedList([...savedList, movie]);
+    if (!savedList.some((item) => item.id === movie.id)) {
+      setSavedList([...savedList, movie]);
+    }
   };
 
   useEffect(() => {
@@ -35,6 +37,8 @@ const App = () => {
       <Route path='/movies/:id'>
         <Movie addToSavedList={addToSavedList} />
       </Route>
+
+      {/* <Route path='/update-movie/id'></Route> */}
     </>
   );
 };
