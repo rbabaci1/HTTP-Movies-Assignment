@@ -12,9 +12,6 @@ const initialState = {
 export default function UpdateMovie() {
   const [movieInfo, setMovieInfo] = useState(initialState);
   const { title, director, metascore, stars } = movieInfo;
-
-  console.log(movieInfo);
-
   const history = useHistory();
 
   const movieToUpdate = history.location.state
@@ -41,7 +38,7 @@ export default function UpdateMovie() {
         .put(`http://localhost:5000/api/movies/${movieToUpdate.id}`, movieInfo)
         .then(() => {
           setMovieInfo(initialState);
-          history.push('/movies');
+          history.push('/');
         })
         .catch((err) => console.error(err));
     }

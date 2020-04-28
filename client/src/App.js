@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import SavedList from './components/Movies/SavedList';
 import MovieList from './components/Movies/MovieList';
@@ -10,12 +10,12 @@ const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
 
-  const getMovieList = () => {
+  const getMovieList = React.useCallback(() => {
     axios
       .get('http://localhost:5000/api/movies')
       .then((res) => setMovieList(res.data))
       .catch((err) => console.error(err));
-  };
+  }, []);
 
   const addToSavedList = (movie) => {
     if (!savedList.some((item) => item.id === movie.id)) {
@@ -23,16 +23,13 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    getMovieList();
-  }, []);
-
   return (
     <>
+      {console.log('render in app')}
       <SavedList list={savedList} />
 
       <Route exact path='/'>
-        <MovieList movies={movieList} />
+        <MovieList movies={movieList} getMovieList={getMovieList} />
       </Route>
 
       <Route path='/movies/:id'>
