@@ -1,8 +1,17 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
+import { Link, useLocation } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
-function MovieList({ movies, getMovieList }) {
+function MovieList({ movies, getMovieList, removeFromSavedList }) {
+  const { state } = useLocation();
+
+  useEffect(() => {
+    if (state) {
+      removeFromSavedList(state.movie.id);
+    }
+  }, [state, removeFromSavedList]);
+
   useEffect(() => {
     getMovieList();
   }, [getMovieList]);

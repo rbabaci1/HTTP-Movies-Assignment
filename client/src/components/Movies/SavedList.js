@@ -9,7 +9,10 @@ function SavedList({ list }) {
       {list.map((movie) => {
         return (
           <NavLink
-            to={`/movies/${movie.id}`}
+            to={{
+              pathname: `/movies/${movie.id}`,
+              state: { movie },
+            }}
             key={movie.id}
             activeClassName='saved-active'
           >
