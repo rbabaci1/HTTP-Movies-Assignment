@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import MovieCard from './MovieCard';
-import axios from 'axios';
+import axios from '../../utils';
 
 function Movie({ addToSavedList }) {
   const history = useHistory();
@@ -15,8 +15,8 @@ function Movie({ addToSavedList }) {
   };
 
   const deleteMovie = () => {
-    axios
-      .delete(`http://localhost:5000/api/movies/${movie.id}`)
+    axios()
+      .delete(`/movies/${movie.id}`)
       .then(() =>
         history.push({
           pathname: '/',

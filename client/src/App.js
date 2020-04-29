@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import SavedList from './components/Movies/SavedList';
 import MovieList from './components/Movies/MovieList';
 import Movie from './components/Movies/Movie';
-import axios from 'axios';
+import axios from './utils';
 import UpdateMovie from './components/UpdateMovie';
 import AddMovie from './components/AddMovie';
 
@@ -12,8 +12,8 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
 
   const getMovieList = useCallback(() => {
-    axios
-      .get('http://localhost:5000/api/movies')
+    axios()
+      .get('/movies')
       .then((res) => setMovieList(res.data))
       .catch((err) => console.error(err));
   }, []);

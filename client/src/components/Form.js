@@ -13,6 +13,7 @@ export default function Form({ action, formInfo, onSubmit, onChange }) {
           name='title'
           value={title}
           onChange={onChange}
+          required
         />
       </label>
 
@@ -24,6 +25,7 @@ export default function Form({ action, formInfo, onSubmit, onChange }) {
           name='director'
           value={director}
           onChange={onChange}
+          required
         />
       </label>
 
@@ -47,6 +49,7 @@ export default function Form({ action, formInfo, onSubmit, onChange }) {
             name='stars'
             value={stars}
             onChange={onChange}
+            required
           />
         </label>
       </section>
