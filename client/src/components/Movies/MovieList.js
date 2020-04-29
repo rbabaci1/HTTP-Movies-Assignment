@@ -10,7 +10,13 @@ function MovieList({ movies, getMovieList }) {
   return (
     <div className='movie-list'>
       {movies.map((movie) => (
-        <Link key={movie.id} to={`/movies/${movie.id}`}>
+        <Link
+          key={movie.id}
+          to={{
+            pathname: `/movies/${movie.id}`,
+            state: { movie },
+          }}
+        >
           <MovieCard movie={movie} />
         </Link>
       ))}
