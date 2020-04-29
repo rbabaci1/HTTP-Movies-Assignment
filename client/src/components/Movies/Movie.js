@@ -45,6 +45,8 @@ function Movie({ addToSavedList }) {
       <div className='update-button' onClick={updateMovie}>
         Update
       </div>
+
+      <div className='delete-button'>X</div>
     </div>
   );
 }

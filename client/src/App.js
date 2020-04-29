@@ -25,7 +25,6 @@ const App = () => {
 
   return (
     <>
-      {console.log('render in app')}
       <SavedList list={savedList} />
 
       <Route exact path='/'>

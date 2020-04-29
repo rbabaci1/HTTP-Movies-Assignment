@@ -85,7 +85,6 @@ export default function UpdateMovie() {
             Actors:
             <textarea
               rows='4'
-              cols='30'
               id='stars'
               name='stars'
               value={stars}
