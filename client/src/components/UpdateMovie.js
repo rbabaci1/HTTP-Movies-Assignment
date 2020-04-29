@@ -11,7 +11,7 @@ export const initialState = {
   stars: [],
 };
 
-export default function UpdateMovie() {
+export default function UpdateMovie({ updateSavedList }) {
   const history = useHistory();
   const [movieInfo, setMovieInfo] = useState(initialState);
 
@@ -37,8 +37,8 @@ export default function UpdateMovie() {
     if (movieToUpdate) {
       axios
         .put(`http://localhost:5000/api/movies/${movieToUpdate.id}`, movieInfo)
-        .then(() => {
-          setMovieInfo(initialState);
+        .then((res) => {
+          updateSavedList(res.data);
           history.push('/');
         })
         .catch((err) => console.error(err));

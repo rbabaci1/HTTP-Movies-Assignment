@@ -13,6 +13,11 @@ body {
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  transition-duration: .5s;
+}
+
+.movie-card:hover {
+  background-color: rgb(212, 212, 210);
 }
 
 .movie-director {

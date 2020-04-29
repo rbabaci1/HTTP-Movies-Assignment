@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import MovieCard from './MovieCard';
-import axios from '../../utils';
+import axios from '../utils';
 
 function Movie({ addToSavedList }) {
   const history = useHistory();

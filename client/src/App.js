@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { Route } from 'react-router-dom';
-import SavedList from './components/Movies/SavedList';
-import MovieList from './components/Movies/MovieList';
-import Movie from './components/Movies/Movie';
+import SavedList from './components/SavedList';
+import MovieList from './components/MovieList';
+import Movie from './components/Movie';
 import axios from './utils';
 import UpdateMovie from './components/UpdateMovie';
 import AddMovie from './components/AddMovie';
@@ -24,9 +24,19 @@ const App = () => {
     }
   };
 
-  const removeFromSavedList = useCallback((movieId) => {
-    setSavedList((list) => list.filter((movie) => movie.id !== movieId));
+  const removeFromSavedList = useCallback((deletedMovie) => {
+    if (deletedMovie) {
+      const { id } = deletedMovie.movie;
+
+      setSavedList((list) => list.filter((movie) => movie.id !== id));
+    }
   }, []);
+
+  const updateSavedList = (updatedMovie) => {
+    setSavedList((list) =>
+      list.map((movie) => (movie.id === updatedMovie.id ? updatedMovie : movie))
+    );
+  };
 
   return (
     <>
@@ -45,7 +55,7 @@ const App = () => {
       </Route>
 
       <Route path='/update-movie/:id'>
-        <UpdateMovie />
+        <UpdateMovie updateSavedList={updateSavedList} />
       </Route>
 
       <Route path='/add-movie'>

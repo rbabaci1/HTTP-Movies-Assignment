@@ -6,9 +6,7 @@ function MovieList({ movies, getMovieList, removeFromSavedList }) {
   const { state } = useLocation();
 
   useEffect(() => {
-    if (state) {
-      removeFromSavedList(state.movie.id);
-    }
+    removeFromSavedList(state);
   }, [state, removeFromSavedList]);
 
   useEffect(() => {
