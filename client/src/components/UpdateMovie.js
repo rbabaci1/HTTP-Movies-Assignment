@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-const initialState = {
+import Form from './Form';
+
+export const initialState = {
   id: 0,
   title: '',
   director: '',
-  metascore: '',
+  metascore: 0,
   stars: [],
 };
 
 export default function UpdateMovie() {
-  const [movieInfo, setMovieInfo] = useState(initialState);
-  const { title, director, metascore, stars } = movieInfo;
   const history = useHistory();
+  const [movieInfo, setMovieInfo] = useState(initialState);
 
   const movieToUpdate = history.location.state
     ? history.location.state.movie
@@ -45,58 +46,15 @@ export default function UpdateMovie() {
   };
 
   return (
-    <div className='update-movie'>
-      <form onSubmit={updateMovie}>
-        <label>
-          Title:
-          <input
-            id='title'
-            type='text'
-            name='title'
-            value={title}
-            onChange={handleChange}
-          />
-        </label>
+    <div className='form-wrapper'>
+      <h2>Update Movie</h2>
 
-        <label>
-          Director:
-          <input
-            id='director'
-            type='text'
-            name='director'
-            value={director}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          MetaScore:
-          <input
-            id='metascore'
-            type='text'
-            name='metascore'
-            value={metascore}
-            onChange={handleChange}
-          />
-        </label>
-
-        <section className='textarea'>
-          <label>
-            Actors:
-            <textarea
-              rows='4'
-              id='stars'
-              name='stars'
-              value={stars}
-              onChange={handleChange}
-            />
-          </label>
-        </section>
-
-        <div className='form-submit-btn'>
-          <button>Update</button>
-        </div>
-      </form>
+      <Form
+        action='UPDATE'
+        formInfo={movieInfo}
+        onChange={handleChange}
+        onSubmit={updateMovie}
+      />
     </div>
   );
 }

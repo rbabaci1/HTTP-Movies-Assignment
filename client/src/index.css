@@ -25,11 +25,11 @@ body {
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
-  cursor: pointer;
   position: relative;
   margin: 1rem auto;
   width: 75%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -97,6 +97,12 @@ body {
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+  text-align: center;
+}
+
+.home-button a {
+  text-decoration: none;
+  color: rgb(9, 8, 92);
 }
 
 .movie-warning {
@@ -104,21 +110,26 @@ body {
   text-align: center;
 }
 
-.update-movie {
-  /* border: 1px solid red; */
+.form-wrapper {
   width: 75%;
   margin: auto;
   padding: 1rem;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
 }
 
-.update-movie form {
+.form-wrapper h2 {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(199, 197, 197);
+}
+
+.form-wrapper form {
   display: flex;
   flex-direction: column;
   width: fit-content;
 }
 
-.update-movie form label {
+.form-wrapper form label {
   font-size: 18px;
   margin: 10px 0;
   color: rgb(71, 71, 71);
@@ -126,13 +137,13 @@ body {
   letter-spacing: 0.5px;
 }
 
-.update-movie form input {
+.form-wrapper form input {
   font-size: 17px;
   outline: none;
   padding: 5px;
 }
 
-.update-movie form textarea {
+.form-wrapper form textarea {
   font-size: 17px;
   padding: 5px;
 }
@@ -176,4 +187,20 @@ body {
 
 #stars {
   margin-left: 53px;
+}
+
+.add-movie-button {
+  margin: 10px 0;
+  padding: 5px 10px;
+  background-color: rgb(221, 202, 95);
+}
+
+.add-movie-button a {
+  text-decoration: none;
+  color: rgb(9, 8, 92);
+}
+
+.add-movie-button a:hover, .home-button a:hover {
+  background-color: #111;
+  color: #fff;
 }

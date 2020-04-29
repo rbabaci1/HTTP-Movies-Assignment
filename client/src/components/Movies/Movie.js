@@ -7,10 +7,6 @@ function Movie({ addToSavedList }) {
   const history = useHistory();
   const { movie } = history.location.state;
 
-  const saveMovie = () => {
-    addToSavedList(movie);
-  };
-
   const updateMovie = () => {
     history.push({
       pathname: `/update-movie/:${movie.id}`,
@@ -34,7 +30,7 @@ function Movie({ addToSavedList }) {
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
 
-      <div className='save-button' onClick={saveMovie}>
+      <div className='save-button' onClick={() => addToSavedList(movie)}>
         Save
       </div>
 
