@@ -9,8 +9,8 @@ function Movie({ addToSavedList }) {
 
   const updateMovie = () => {
     history.push({
-      pathname: `/update-movie/:${movie.id}`,
-      state: { movie },
+      pathname: `/update-add-movie/:${movie.id}`,
+      state: { action: 'UPDATE', movie },
     });
   };
 

@@ -4,8 +4,7 @@ import SavedList from './components/SavedList';
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 import axios from './utils';
-import UpdateMovie from './components/UpdateMovie';
-import AddMovie from './components/AddMovie';
+import UpdateAddMovie from './components/UpdateAddMovie';
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
@@ -54,12 +53,8 @@ const App = () => {
         <Movie addToSavedList={addToSavedList} />
       </Route>
 
-      <Route path='/update-movie/:id'>
-        <UpdateMovie updateSavedList={updateSavedList} />
-      </Route>
-
-      <Route path='/add-movie'>
-        <AddMovie />
+      <Route path='/update-add-movie/:id'>
+        <UpdateAddMovie updateSavedList={updateSavedList} />
       </Route>
     </>
   );
