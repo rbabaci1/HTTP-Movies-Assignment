@@ -1,39 +1,60 @@
-import React, { useState, useEffect } from "react";
-import { Route } from "react-router-dom";
-import SavedList from "./Movies/SavedList";
-import MovieList from "./Movies/MovieList";
-import Movie from "./Movies/Movie";
-import axios from 'axios';
+import React, { useState, useCallback } from 'react';
+import { Route } from 'react-router-dom';
+import SavedList from './components/SavedList';
+import MovieList from './components/MovieList';
+import Movie from './components/Movie';
+import axios from './utils';
+import UpdateAddMovie from './components/UpdateAddMovie';
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
 
-  const getMovieList = () => {
-    axios
-      .get("http://localhost:5000/api/movies")
-      .then(res => setMovieList(res.data))
-      .catch(err => console.log(err.response));
-  };
-
-  const addToSavedList = movie => {
-    setSavedList([...savedList, movie]);
-  };
-
-  useEffect(() => {
-    getMovieList();
+  const getMovieList = useCallback(() => {
+    axios()
+      .get('/movies')
+      .then((res) => setMovieList(res.data))
+      .catch((err) => console.error(err));
   }, []);
+
+  const addToSavedList = (movie) => {
+    if (!savedList.some((item) => item.id === movie.id)) {
+      setSavedList([...savedList, movie]);
+    }
+  };
+
+  const removeFromSavedList = useCallback((deletedMovie) => {
+    if (deletedMovie) {
+      const { id } = deletedMovie.movie;
+
+      setSavedList((list) => list.filter((movie) => movie.id !== id));
+    }
+  }, []);
+
+  const updateSavedList = (updatedMovie) => {
+    setSavedList((list) =>
+      list.map((movie) => (movie.id === updatedMovie.id ? updatedMovie : movie))
+    );
+  };
 
   return (
     <>
       <SavedList list={savedList} />
 
-      <Route exact path="/">
-        <MovieList movies={movieList} />
+      <Route exact path='/'>
+        <MovieList
+          movies={movieList}
+          getMovieList={getMovieList}
+          removeFromSavedList={removeFromSavedList}
+        />
       </Route>
 
-      <Route path="/movies/:id">
+      <Route path='/movies/:id'>
         <Movie addToSavedList={addToSavedList} />
+      </Route>
+
+      <Route path='/update-add-movie/:id'>
+        <UpdateAddMovie updateSavedList={updateSavedList} />
       </Route>
     </>
   );
